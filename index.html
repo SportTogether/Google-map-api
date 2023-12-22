@@ -1,0 +1,48 @@
+<!-- <!DOCTYPE html>
+
+  </body>-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Google map</title>
+  </head>
+  <body>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Lấy tham số từ URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const originPlaceId = urlParams.get("originPlaceId");
+        const destinationPlaceId = urlParams.get("destinationPlaceId");
+        console.log(originPlaceId + "-" + destinationPlaceId);
+        const apiKey = "AIzaSyBh95ExKKtwAIPTnQGcDDL7XiUfjma97rA";
+
+        // Kiểm tra xem có đủ tham số không
+        if (originPlaceId && destinationPlaceId) {
+          // Xây dựng URL cho iframe
+          const iframe = document.querySelector("iframe");
+          const src =
+            "https://www.google.com/maps/embed/v1/directions" +
+            `?origin=place_id:${originPlaceId}` +
+            `&destination=place_id:${destinationPlaceId}` +
+            `&key=${apiKey}`;
+
+          // Gán URL cho thuộc tính src của iframe
+          iframe.setAttribute("src", src);
+        } else {
+          console.error("Missing parameters in the URL");
+        }
+      });
+    </script>
+
+    <iframe
+      width="100%"
+      height="100%"
+      style="border: 0"
+      loading="lazy"
+      allowfullscreen
+    ></iframe>
+  </body>
+</html>
